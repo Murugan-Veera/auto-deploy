@@ -16,6 +16,14 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React From By Murugan Veera
+          </a>
+          <a 
+          className="Web"
+          href="https://www.artofliving.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          >
+            Art of living
         </a>
       </header>
     </div>
