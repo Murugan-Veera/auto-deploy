@@ -1,26 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-// functions/api/register.js
+//export const runtime = 'experimental-edge';
+//export const runtime = "nodejs";
 
-export async function onRequest(context) {
-  const { request } = context;
 
-  // Handle CORS preflight request
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
-  }
-
-  if (request.method === 'POST') {
-   // const data = await request.json();
-
-    // You can save the data to a database or KV storage.
-    // For this example, we'll just log the data to the console.
+export default async (req, res) => {
+  if (req.method === 'POST') {
     const { name, email, password } = req.body;
 
     // Construct data object
@@ -50,18 +35,9 @@ export async function onRequest(context) {
     // Write updated data back to file
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 
-    return new Response(JSON.stringify({ message: 'Registration successful' }), {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-      },
-    });
+    // Respond with success message
+    res.status(200).json({ message: 'Registration successful' });
   } else {
-    return new Response('Method not allowed Your Request may be in queue', {
-      status: 405,
-      headers: {
-        'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-      },
-    });
+    res.status(405).json({ message: 'Method not allowed' });
   }
-}
+};
