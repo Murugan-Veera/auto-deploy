@@ -26,7 +26,7 @@ export default function Register() {
   
     try {
       //const response = await fetch('https://f0182807.register-backend.pages.dev/api/register/', {
-        const response = await fetch('functions/api/register/', {
+        const response = await fetch('/api/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
