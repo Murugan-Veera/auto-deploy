@@ -49,10 +49,10 @@ export default function Register() {
 
   return (
     
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} className='App-header'>
      
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
-      <div className='App'><header>Register Form</header></div>
+      <div className='App'><header>Auto Deploy Register Form</header></div>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
 
