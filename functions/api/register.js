@@ -14,7 +14,7 @@ export async function onRequest(context) {
     });
   }
 
-  /*if (request.method === 'POST') {
+  if (request.method === 'POST') {
     const data = await request.json();
 
     // You can save the data to a database or KV storage.
@@ -34,12 +34,5 @@ export async function onRequest(context) {
         'Access-Control-Allow-Origin': '*', // Allow requests from any origin
       },
     });
-  }*/
-
-    return new Response(JSON.stringify({ message: 'Registration successful' }), {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-      },
-    });
+  }
 }
