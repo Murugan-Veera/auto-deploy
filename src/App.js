@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 export const runtime = 'experimental-edge';
-
+//export const runtime = "nodejs";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -26,10 +26,13 @@ export default function Register() {
   
     try {
       //const response = await fetch('https://f0182807.register-backend.pages.dev/api/register/', {
-        const response = await fetch('api/register/', {
+        const response = await fetch('functions/api/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
         },
         body: JSON.stringify(formData),
       });

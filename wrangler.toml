@@ -1,0 +1,6 @@
+name = "my-cloudflare-worker"
+type = "javascript"
+
+kv_namespaces = [
+  { binding = "FORM_DATA", id = "d2b39607e9424f86af4162abdf2e974d" }
+]
