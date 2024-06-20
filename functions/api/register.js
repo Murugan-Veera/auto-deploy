@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-//export const runtime = 'experimental-edge';
+export const runtime = 'experimental-edge';
 //export const runtime = "nodejs";
 
 
