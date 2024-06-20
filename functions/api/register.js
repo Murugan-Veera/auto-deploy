@@ -15,11 +15,38 @@ export async function onRequest(context) {
   }
 
   if (request.method === 'POST') {
-    const data = await request.json();
+   // const data = await request.json();
 
     // You can save the data to a database or KV storage.
     // For this example, we'll just log the data to the console.
-    console.log('Received data:', data);
+    const { name, email, password } = req.body;
+
+    // Construct data object
+    const newEntry = {
+      name,
+      email,
+      password,
+      timestamp: new Date().toISOString(),
+    };
+
+    // Define file path
+    const filePath = path.join(process.cwd(), 'data', 'registrations.json');
+
+    // Ensure data directory exists
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+
+    // Read existing data
+    let data = [];
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      data = JSON.parse(fileContent);
+    }
+
+    // Add new entry to data
+    data.push(newEntry);
+
+    // Write updated data back to file
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 
     return new Response(JSON.stringify({ message: 'Registration successful' }), {
       headers: {
