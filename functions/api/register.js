@@ -14,7 +14,7 @@ export async function onRequest(context) {
     });
   }
 
-  if (request.method === 'POST') {
+  /*if (request.method === 'POST') {
     const data = await request.json();
 
     // You can save the data to a database or KV storage.
@@ -28,11 +28,18 @@ export async function onRequest(context) {
       },
     });
   } else {
-    return new Response('Method not allowed', {
+    return new Response('Method not allowed Your Request may be in queue', {
       status: 405,
       headers: {
         'Access-Control-Allow-Origin': '*', // Allow requests from any origin
       },
     });
-  }
+  }*/
+
+    return new Response(JSON.stringify({ message: 'Registration successful' }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // Allow requests from any origin
+      },
+    });
 }
